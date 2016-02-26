@@ -35,8 +35,10 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'get /user' : 'UserController.getUser',
-  'post /user' : 'UserController.registerUser'
+  'post /user/checkUserDevice' : 'UsersController.checkUserDevice',
+  'post /user/registerDevice' : 'UsersController.registerDevice',//test purpose
+  'post /user/testCreateUser' : 'UsersController.testCreateUser',////test purpose
+  'post /user/loginUser' : 'UsersController.loginUser',
 
   /***************************************************************************
   *                                                                          *
