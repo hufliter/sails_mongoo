@@ -13,19 +13,27 @@ module.exports = {
   		unique: true,
   		primaryKey: true
   	},
+    
   	device_type: {
   		type: 'string'
   	},
+
+    is_active: {
+        type: 'integer'
+    },
+
   	createdAt: {
 	    type: 'datetime',
 	    defaultsTo: function (){ return new Date(); },
 	    columnName: 'created_at'
-	 },
+    },
+
 	updatedAt: {
 	    type: 'datetime',
 	    defaultsTo: function (){ return new Date(); },
 	     columnName: 'updated_at'
 	},
+
 	//Add a reference to Users
   	users: {
   		  collection: 'users',
@@ -34,7 +42,7 @@ module.exports = {
 
   },
   	checkUserDevice: function(device_id, next){
-  		User_device.find({device_id:device_id})
+  		User_device.findOne({device_id:device_id})
   			.populate('users')
   			.exec(function(err,result){
   				if(err) return next(null, err);

@@ -70,6 +70,8 @@ module.exports = {
 						session_token: sess_token,
 						expire: 1
 					};
+					//if exist user_id (maybe update expire time and updatedAt)
+					//else create new one
 					Users_session.findOrCreate({user_id:result.id}, data).exec(function(err,result){
 						if( err ) return res.json(err);
 						if( result ) {
@@ -91,7 +93,14 @@ module.exports = {
 		var session_token = req.body.session_token;
 
 		if( session_token && (session_token != undefined) ) {
-			
+			Users_session.validateUserSession(session_token, function(err, result) {
+				if( err ) return res.json(err);
+				if( result ) {
+					return res.json(result);
+				} else {
+					return res.json({"error":2});
+				}
+			});
 		} else {
 			return res.json({"error":1});
 		}

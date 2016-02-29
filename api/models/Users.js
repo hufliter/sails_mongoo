@@ -33,7 +33,12 @@ module.exports = {
 	    type: 'datetime',
 	    defaultsTo: function (){ return new Date(); },
 	     columnName: 'updated_at'
-	}
+	},
+	//Add a reference to Users_session
+  	users_session: {
+	  	collection: 'users_session',
+	  	via: 'user_id'
+  	},
   },
 
   	checkUsername: function(userName, next) {

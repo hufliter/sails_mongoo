@@ -39,7 +39,9 @@ module.exports.routes = {
   'post /user/registerDevice' : 'UsersController.registerDevice',//test purpose
   'post /user/testCreateUser' : 'UsersController.testCreateUser',////test purpose
   'post /user/loginUser' : 'UsersController.loginUser',
+  'post /user/validateSessionToken' : 'UsersController.validateSessionToken',
 
+  'get /api/getLeaderboardData'  :'ApiController.getLeaderboardData'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
